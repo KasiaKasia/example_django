@@ -10,19 +10,23 @@
 {% block content %}
 <h1>People</h1>
 
-  {% for person in object_list %}
+
     <table class="person">
+        {% for person in object_list %}
         <tr>
-            <td> {{ person }} </td>
+            <td><a href="{{ person.get_absolute_url }}"> {{ person }} </a></td>
             <td> (<a href="{% url 'people-edit' pk=person.id %}">edit</a>)</td>
             <td>{% if person.id %}
-                <a href="{% url 'person-delete' pk=person.id %}">Delete</a>
+                (<a href="{% url 'person-delete' pk=person.id %}">Delete</a>)
                 {% endif %}
             </td>
         </tr>
+
+        {% endfor %}
+        <tr>
+            <td colspan="3"><a href="{% url 'person-new' %}">add person</a></td>
+        </tr>
     </table>
-  {% endfor %}
-<a href="{% url 'person-new' %}">add person</a>
 {% endblock %}
 </body>
 </html>

@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 
 # Create your models here.
@@ -13,3 +14,7 @@ class Person(models.Model):
             self.first_name,
             self.last_name,
         ])
+
+    def get_absolute_url(self):
+
+        return reverse('people-view', kwargs={'pk': self.id})

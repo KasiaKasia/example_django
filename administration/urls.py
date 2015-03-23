@@ -17,6 +17,8 @@ urlpatterns = patterns('',
         name='people-edit',),
     url(r'^delete/(?P<pk>\d+)/$', people.views.DeletePersonView.as_view(),
         name='person-delete',),
+    url(r'^(?P<pk>\d+)/$', people.views.PersonView.as_view(),
+        name='people-view',),
 
 )
 urlpatterns += staticfiles_urlpatterns()

@@ -1,13 +1,12 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from people.models import Person
 from django.core.urlresolvers import reverse
 from django.views.generic import CreateView
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView
-
 class ListPersonView(ListView):
 
     model = Person
@@ -50,3 +49,8 @@ class DeletePersonView(DeleteView):
 
     def get_success_url(self):
         return reverse('people-list')
+
+class PersonView(DetailView):
+
+    model = Person
+    template_name = 'person.html'

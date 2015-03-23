@@ -8,16 +8,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Delete Person</h1>
+    <h1>Delete Person</h1>
 
-<p>Are you sure you want to delete the person {{ person }}?</p>
+    <p>Are you sure you want to delete the person {{ person }}?</p>
 
-<form action="{% url 'person-delete' pk=person.id %}" method="POST">
-  {% csrf_token %}
+    <form action="{% url 'person-delete' pk=person.id %}" method="POST">
+      {% csrf_token %}
 
-  <input type="submit" value="Yes, delete." />
-  <a href="{% url 'people-list' %}">No, cancel.</a>
-</form>
+      <input type="submit" value="Yes, delete." />
+      <a href="{% url 'people-list' %}">No, cancel.</a>
+    </form>
 {% endblock %}
 </body>
 </html>

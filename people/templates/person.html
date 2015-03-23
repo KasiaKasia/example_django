@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>{{ person }}</h1>
+
+    <p>Email: {{ person.email }}</p>
+    <a href="{% url 'person-new' %}">Add person</a>
+    <a href="{% url 'person-delete' pk=person.id %}">Delete person</a>
+    <a href="{% url 'people-list' %}">Back to list</a>
+
+{% endblock %}
+</body>
+</html>
