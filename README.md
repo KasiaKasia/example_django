@@ -1,5 +1,4 @@
-# example_django
-example django 1.7.
+# example django 1.7.
 
 Create a Clean Workspace:                                                                                                    
 <code>$ mkdir example_django  </code>                                                                                                      
