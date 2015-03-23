@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if person.id %}
+<h1>Edit Person</h1>
+{% else %}
+<h1>Add Person</h1>
+{% endif %}
+
+<form action="{{ action }}" method="POST">
+  {% csrf_token %}
+  <ul>
+    {{ form.as_ul }}
+  </ul>
+  <input id="save_person" type="submit" value="Save" />
+</form>
+
+<a href="{% url 'people-list' %}">back to list</a>
+{% endblock %}
+</body>
+</html>

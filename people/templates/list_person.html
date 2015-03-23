@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+<h1>People</h1>
+
+  {% for person in object_list %}
+    <table class="person">
+        <tr>
+            <td> {{ person }} </td>
+            <td> (<a href="{% url 'people-edit' pk=person.id %}">edit</a>)</td>
+            <td>{% if person.id %}
+                <a href="{% url 'person-delete' pk=person.id %}">Delete</a>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+  {% endfor %}
+<a href="{% url 'person-new' %}">add person</a>
+{% endblock %}
+</body>
+</html>
