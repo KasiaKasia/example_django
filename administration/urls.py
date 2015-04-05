@@ -2,12 +2,10 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 import people.views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 # konfiguracja adresów URL
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'administration.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+   
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', people.views.ListPersonView.as_view(),
         name='people-list',),
