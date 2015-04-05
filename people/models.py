@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.db import models
 
-# Create your models here.
+# Tworzenie modeli
 class Person(models.Model):
 
     first_name = models.CharField(max_length=255,)
@@ -20,6 +20,7 @@ class Person(models.Model):
         return reverse('people-view', kwargs={'pk': self.id})
 
 class Project(models.Model):
+    
     person = models.ForeignKey(Person)
     name = models.CharField(max_length=128)
 
