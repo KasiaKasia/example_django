@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 from django.shortcuts import render, render_to_response
 
 # Create your views here.
 from django.template import RequestContext
+=======
+# Create your views here.
+from django.shortcuts import render
+>>>>>>> origin/master
 from django.views.generic import ListView, DetailView
 from people.forms import PersonForm, ProjectForm
 from people.models import Person, Project
@@ -57,6 +62,7 @@ class PersonView(DetailView):
 
     model = Person
     template_name = 'person.html'
+<<<<<<< HEAD
 
 def index(request):
     context = RequestContext(request)
@@ -135,3 +141,5 @@ def add_project(request, person_id_name):
 
     return render_to_response( 'add_project.html',
                                context_dict, context)
+=======
+>>>>>>> origin/master

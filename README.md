@@ -1,5 +1,4 @@
-# example_django
-example django 1.7.
+# example django 1.7.
 
 Create a Clean Workspace:                                                                                                    
 <code>$ mkdir example_django  </code>                                                                                                      
@@ -44,6 +43,7 @@ INSTALLED_APPS = (
 Perform migrations after changes                                                                                             
 <code>(example_django)$ python ./manage.py syncdb     </code>                                                                
 <code>(example_django)$ python manage.py makemigrations    </code>  
+<code>(example_django)$ python manage.py migrate </code> 
 
 In the console, start the server with the command:                                                                           
 <code>(example_django)$ python manage.py runserver   </code>                                                                                
