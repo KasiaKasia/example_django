@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+{% block body_block %}
+
+
+            <br/>
+    		{% if not  person_id_name %}
+			    <div style="color: blue;">The project has been added!</div>
+                <br/>
+                <a href="{% url 'people-list' %}">Back to list</a>
+		    {% else %}
+             <h1>Add a Project</h1>
+
+            <form class="span6" id="project_form" method="post" action="/{{ person_id_name }}/add_project/">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+			{{ hidden }}
+			{% endfor %}
+
+            {% for field in form.visible_fields %}
+            {{ field.errors }}<br/>
+            {{ field.help_text}}
+            {{ field }}
+            {% endfor %}
+                <br/>
+            <input type="submit" name="Create Project" value="Create Project"/>
+            </form>
+
+	    {% endif %}
+{% endblock %}
+</body>
+</html>

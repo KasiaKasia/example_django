@@ -18,3 +18,10 @@ class Person(models.Model):
     def get_absolute_url(self):
 
         return reverse('people-view', kwargs={'pk': self.id})
+
+class Project(models.Model):
+    person = models.ForeignKey(Person)
+    name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.name
