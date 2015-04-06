@@ -92,7 +92,7 @@ def get_category_list(max_results=0, starts_with=''):
 def person_(request, person_id_name):
 
     context = RequestContext(request)
-    person_id = person_id_name.replace('_', ' ')
+    person_id = person_id_name
     context_dict = {'person_id': person_id}
 
     try:
