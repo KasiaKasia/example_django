@@ -84,10 +84,8 @@ def get_category_list(max_results=0, starts_with=''):
         if (len(list) > max_results):
             list = list[:max_results]
 
-    for x in list:
-        x.first_name = x.first_name
-        x.last_name = x.last_name
-        x.email = x.email
+
+    return list
 
 def person_(request, person_id_name):
 
@@ -108,9 +106,9 @@ def person_(request, person_id_name):
 
 def add_project(request, person_id_name):
     context = RequestContext(request)
-    cat_list = get_category_list()
+    list = get_category_list()
     context_dict = {}
-    context_dict['cat_list'] = cat_list
+    context_dict['list'] = list
 
     person = person_id_name
     if request.method == 'POST':
@@ -120,8 +118,8 @@ def add_project(request, person_id_name):
             project = form.save(commit=False)
 
             try:
-                cat = Person.objects.get(id=person)
-                project.person = cat
+                x = Person.objects.get(id=person)
+                project.person = x
             except Person.DoesNotExist:
                 return render_to_response('add_project.html',
                     {}, context)
