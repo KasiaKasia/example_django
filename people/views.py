@@ -108,9 +108,9 @@ def person_(request, person_id_name):
 
 def add_project(request, person_id_name):
     context = RequestContext(request)
-    list = get_category_list()
+    cat_list = get_category_list()
     context_dict = {}
-    context_dict['list'] = list
+    context_dict['cat_list'] = cat_list
 
     person = person_id_name
     if request.method == 'POST':
@@ -120,8 +120,8 @@ def add_project(request, person_id_name):
             project = form.save(commit=False)
 
             try:
-                x = Person.objects.get(id=person)
-                project.person = x
+                cat = Person.objects.get(id=person)
+                project.person = cat
             except Person.DoesNotExist:
                 return render_to_response('add_project.html',
                     {}, context)
