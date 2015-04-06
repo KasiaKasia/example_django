@@ -74,20 +74,20 @@ def index(request):
 
 
 def get_category_list(max_results=0, starts_with=''):
-    cat_list = []
+    list = []
     if starts_with:
-        cat_list = Person.objects.filter(id=starts_with)
+        list = Person.objects.filter(id=starts_with)
     else:
-        cat_list = Person.objects.all()
+        list = Person.objects.all()
 
     if max_results > 0:
-        if (len(cat_list) > max_results):
-            cat_list = cat_list[:max_results]
+        if (len(list) > max_results):
+            list = list[:max_results]
 
-    for cat in cat_list:
-        cat.first_name = cat.first_name
-        cat.last_name = cat.last_name
-        cat.email = cat.email
+    for x in list:
+        x.first_name = x.first_name
+        x.last_name = x.last_name
+        x.email = x.email
 
 def person_(request, person_id_name):
 
