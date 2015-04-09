@@ -9,10 +9,11 @@
 
 {% block content %}
 
-<h1>People</h1>
+      {% if user.is_authenticated %}
+            <h1>Welcome,  {{ user.username }} </h1>
 
     <table>
-
+        <h1>People</h1>
         {% for person in object_list %}
 
         <tr>
@@ -29,6 +30,16 @@
         </tr>
     </table>
 
+        <br/><br/><br/>
+        <ul class="nav pull-left">
+            <li><a href="/logout/">Logout</a></li>
+    {% else %}
+             <br/><br/><br/>
+            <li ><a href="/register/">Register</a></li>
+            <li ><a href="/login/">Login</a></li>
+
+    {% endif %}
+        </ul>
 {% endblock %}
 </body>
 </html>

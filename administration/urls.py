@@ -2,10 +2,10 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 import people.views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
 # konfiguracja adresów URL
+
 urlpatterns = patterns('',
-   
+
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', people.views.ListPersonView.as_view(),
         name='people-list',),
@@ -19,6 +19,9 @@ urlpatterns = patterns('',
         name='people-view',),
     url(r'^(?P<person_id_name>\w+)/add_project/$', people.views.add_project,
         name='add_project'),
-
+    url(r'^register/$',   people.views.register,      name='register'),
+    url(r'^login/$',      people.views.user_login,    name='login'),
+    url(r'^restricted/$',  people.views.restricted,    name='restricted'),
+    url(r'^logout/$',     people.views.user_logout,   name='logout'),
 )
 urlpatterns += staticfiles_urlpatterns()

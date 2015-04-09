@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+{% block title %}Register with Rango{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+
+    <br/>
+
+    <div class="container">
+        {% if registered %}
+        <p> Thank you for registering.
+
+        <p><a href="/login/">Login in</a> </p>
+        {% else %}
+
+        <form class="form-signin span8" id="user_form" method="post" action="/register/"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">Sign up Here</h2>
+
+
+            {% for field in user_form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text}}<br/>
+            {{ field }}<br/>
+            {% endfor %}
+
+
+
+
+            <br/>
+
+            <input class="btn btn-primary" type="submit" name="submit" value="Register"/>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

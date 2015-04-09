@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-# Create your tests here.
+# Tworzenie testów
 from people.models import Person
 
 class PersonTests(TestCase):

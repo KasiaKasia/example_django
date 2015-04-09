@@ -1,12 +1,12 @@
 __author__ = 'KatarzynaAleksandra'
 from django import forms
 from people.models import Person, Project
-
+from django.contrib.auth.models import User
 
 class PersonForm(forms.ModelForm):
     first_name = forms.CharField(max_length=255)
     last_name = forms.CharField(max_length=255)
-    email = forms.EmailField()
+    website = forms.URLField()
 
     # Klasa do obsługi metadanych związanym z forms
     class Meta:
@@ -20,3 +20,13 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ('name',)
+
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+
+
+    class Meta:
+        model = User
+
+        fields = ('username', 'email', 'password')

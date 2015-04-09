@@ -6,31 +6,48 @@
 </head>
 <body>
 
-{% block body_block %}
+{% extends "base.html" %}
+
+{% block content %}
 
 
             <br/>
     		{% if not  person_id_name %}
 			    <div style="color: blue;">The project has been added!</div>
+
+                {% if projects %}
+                <ul>
+                    <!-- instrukcja wyświetlająca dla Person Project's -->
+                    {% for project in projects %}
+                        <li> {{ project.name }}    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                    <strong>No project currently for a person.</strong><br/>
+                {% endif %}
+
+
                 <br/>
                 <a href="{% url 'people-list' %}">Back to list</a>
 		    {% else %}
-             <h1>Add a Project</h1>
+                <h1>Add a Project</h1>
 
-            <form class="span6" id="project_form" method="post" action="/{{ person_id_name }}/add_project/">
-            {% csrf_token %}
-            {% for hidden in form.hidden_fields %}
-			{{ hidden }}
-			{% endfor %}
+                <form class="span6" id="project_form" method="post" action="/{{ person_id_name }}/add_project/">
+                    <!-- csrf_token tag dla formularza  -->
+                    {% csrf_token %}
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
 
-            {% for field in form.visible_fields %}
-            {{ field.errors }}<br/>
-            {{ field.help_text}}
-            {{ field }}
-            {% endfor %}
-                <br/>
-            <input type="submit" name="Create Project" value="Create Project"/>
-            </form>
+                    {% for field in form.visible_fields %}
+                        {{ field.errors }}<br/>
+                        {{ field.help_text}}
+                        {{ field }}
+                    {% endfor %}
+                    <br/>
+                    <input type="submit" name="Create Project" value="Create Project"/>
+                    <a href="{% url 'people-list' %}">No, cancel.</a>
+                </form>
 
 	    {% endif %}
 {% endblock %}
