@@ -9,12 +9,22 @@
 
 {% block content %}
 
-    <h1>{{ person }}</h1>
-
-    <p>Email: {{ person.email }}</p>
-    <a href="{% url 'person-new' %}">Add person</a>
-    <a href="{% url 'person-delete' pk=person.id %}">Delete person</a>
-    <a href="{% url 'people-list' %}">Back to list</a>
+  <table class="table">
+    <thead>
+        <tr>
+            <th colspan="3">{{ person }}</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr>
+            <td >Email:</td> <td colspan="2"> {{ person.email }}</td>
+         </tr>
+         <tr>
+            <td><a href="{% url 'person-new' %}">Add person</a></td>
+            <td><a href="{% url 'person-delete' pk=person.id %}">Delete person</a></td>
+            <td><a href="{% url 'people-list' %}">Back to list</a></td>
+          </tr>
+  </table>
 
 {% endblock %}
 

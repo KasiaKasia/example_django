@@ -31,24 +31,42 @@
                 <a href="{% url 'people-list' %}">Back to list</a>
 		    {% else %}
                 <h1>Add a Project</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name project</th>
+                    </tr>
+                </thead>
+            <tbody>
 
                 <form class="span6" id="project_form" method="post" action="/{{ person_id_name }}/add_project/">
                     <!-- csrf_token tag dla formularza  -->
                     {% csrf_token %}
-                    {% for hidden in form.hidden_fields %}
-                        {{ hidden }}
-                    {% endfor %}
+                     <tr  >
+                         <td>
+                          {% for hidden in form.hidden_fields %}
+                            {{ hidden }}
+                          {% endfor %}
 
-                    {% for field in form.visible_fields %}
-                        {{ field.errors }}<br/>
-                        {{ field.help_text}}
-                        {{ field }}
-                    {% endfor %}
-                    <br/>
-                    <input type="submit" name="Create Project" value="Create Project"/>
-                    <a href="{% url 'people-list' %}">No, cancel.</a>
+                            {% for field in form.visible_fields %}
+                                {{ field.errors }}
+                                {{ field.help_text}}
+                                {{ field }}
+                            {% endfor %}
+                        </td>
+                     </tr>
+
+
+                <tr>
+                    <td>
+                        <input type="submit" name="Create Project" value="Create Project"/>
+                        <a href="{% url 'people-list' %}">No, cancel.</a>
+                    </td>
+                </tr>
+
                 </form>
-
+            </tbody>
+            </table>
 	    {% endif %}
 {% endblock %}
 </body>

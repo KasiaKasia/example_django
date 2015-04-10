@@ -7,28 +7,41 @@
 <body>
 
 
-{% block title %}Login {% endblock %}
+{% block title %}<h1>Login </h1> {% endblock %}
 
 {% block body_block %}
-    <h1>Login </h1>
-
-        <form  id="login_form" method="post" action="/login/">
-            <h2>Please sign in</h2>
-            {% if bad_details %}
-            <p><strong>Your username and/or password were incorrect!</strong></p>
-            {% elif disabled_account %}
-            <p><strong>Your account is currently disabled; we can't log you in!</strong></p>
-            {% endif %}
 
 
-            {% csrf_token %}
-            Login: <input type="text"  name="username" value="" size="50"/>
-            <br/>
-            Password: <input type="password"  name="password" value="" size="50"/>
-            <br/>
+            <form  id="login_form" method="post" action="/login/">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Please sign in</th>
+                  </tr>
+                </thead>
+                {% if bad_details %}
+                <p><strong>Your username and/or password were incorrect!</strong></p>
+                {% elif disabled_account %}
+                <p><strong>Your account is currently disabled; we can't log you in!</strong></p>
+                {% endif %}
+                <tbody>
+                {% csrf_token %}
+                    <tr>
 
-            <button class="btn btn-primary" type="submit">Sign in</button>
-        </form>
+                        <td> Login:       </td>
+                        <td> <input type="text"       name="username" value="" size="50"/></td>
+                    </tr>
+                    <tr>
+                        <td> Password:    </td>
+                        <td> <input type="password"   name="password" value="" size="50"/></td>
+
+                    </tr>
+                    <tr>
+                        <th colspan="2"> <button class="btn btn-primary" type="submit">Sign in</button></th>
+                    </tr>
+                </tbody>
+            </table>
+            </form>
 
 
 {% endblock %}

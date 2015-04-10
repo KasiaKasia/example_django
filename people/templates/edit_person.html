@@ -14,16 +14,21 @@
     {% else %}
         <h1>Add Person</h1>
     {% endif %}
+    <table class="table">
+        <form action="{{ action }}" method="POST">
+          {% csrf_token %}
+             <tbody>
+                 <tr>
+                    <td>{{ form.as_ul }}</td>
+                 </tr>
+             </tbody>
+          <tr>
+                    <td><input id="save_person" type="submit" value="Save" /></td>
+          </tr>
+        </form>
+    </table>
 
-    <form action="{{ action }}" method="POST">
-      {% csrf_token %}
-      <ul>
-        {{ form.as_ul }}
-      </ul>
-      <input id="save_person" type="submit" value="Save" />
-    </form>
-
-    <a href="{% url 'people-list' %}">back to list</a>
+    <a href="{% url 'people-list' %}">Back to list</a>
 {% endblock %}
 </body>
 </html>
