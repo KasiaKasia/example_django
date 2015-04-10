@@ -84,11 +84,6 @@ def get_category_list(max_results=0, starts_with=''):
         if (len(list) > max_results):
             list = list[:max_results]
 
-<<<<<<< HEAD
-=======
-
-    return list
->>>>>>> origin/master
 
     return list
 

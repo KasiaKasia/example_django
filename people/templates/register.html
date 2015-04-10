@@ -7,22 +7,21 @@
 <body>
 
 
-{% block title %}Register with Rango{% endblock %}
+{% block title %}Register {% endblock %}
 
 {% block body_block %}
-<div class="hero-unit">
+
 
     <br/>
 
-    <div class="container">
+
         {% if registered %}
         <p> Thank you for registering.
 
         <p><a href="/login/">Login in</a> </p>
         {% else %}
 
-        <form class="form-signin span8" id="user_form" method="post" action="/register/"
-              enctype="multipart/form-data">
+        <form  id="user_form" method="post" action="/register/">
             {% csrf_token %}
             <h2 class="form-signin-heading">Sign up Here</h2>
 
@@ -41,8 +40,8 @@
             <input class="btn btn-primary" type="submit" name="submit" value="Register"/>
         </form>
         {% endif %}
-    </div>
-</div>
+
+
 {% endblock %}
 </body>
 </html>
