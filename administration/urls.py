@@ -22,6 +22,6 @@ urlpatterns = patterns('',
     url(r'^register/$',   people.views.register,      name='register'),
     url(r'^login/$',      people.views.user_login,    name='login'),
     url(r'^restricted/$',  people.views.restricted,    name='restricted'),
-    url(r'^logout/$',     people.views.user_logout,   name='logout'),
+    url(r'^logout/$',      people.views.user_logout,   name='logout'),
 )
 urlpatterns += staticfiles_urlpatterns()

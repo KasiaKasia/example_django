@@ -12,37 +12,37 @@
 {% block body_block %}
 
 
-            <form  id="login_form" method="post" action="/login/">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th colspan="2">Please sign in</th>
-                  </tr>
-                </thead>
+    <form  id="login_form" method="post" action="/login/">
+            <div class="container">
+                <h2>Please sign in</h2>
+
                 {% if bad_details %}
                 <p><strong>Your username and/or password were incorrect!</strong></p>
                 {% elif disabled_account %}
                 <p><strong>Your account is currently disabled; we can't log you in!</strong></p>
                 {% endif %}
-                <tbody>
+
                 {% csrf_token %}
-                    <tr>
+                <div class="form-group">
 
-                        <td> Login:       </td>
-                        <td> <input type="text"       name="username" value="" size="50"/></td>
-                    </tr>
-                    <tr>
-                        <td> Password:    </td>
-                        <td> <input type="password"   name="password" value="" size="50"/></td>
+                    <label for="username">Username:&nbsp;</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" size="70">
 
-                    </tr>
-                    <tr>
-                        <th><a href="{% url 'people-list' %}">Back to list</a></th>
-                        <th colspan="2"> <button class="btn btn-primary" type="submit">Sign in</button></th>
-                    </tr>
-                </tbody>
-            </table>
-            </form>
+                </div>&nbsp;
+
+                <div class="form-group">
+
+                    <label for="pwd">Password:&nbsp;&nbsp; </label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" size="70">
+
+
+                </div>
+                <br/>
+                    <a href="{% url 'people-list' %}">Back to list</a>
+                    <button class="btn btn-primary" type="submit">Sign in</button>
+
+            </div>
+    </form>
 
 
 {% endblock %}

@@ -73,7 +73,7 @@ def index(request):
 
 
 
-def get_category_list(max_results=0, starts_with=''):
+def get_list(max_results=0, starts_with=''):
     list = []
     if starts_with:
         list = Person.objects.filter(id=starts_with)
@@ -107,7 +107,7 @@ def person_(request, person_id_name):
 def add_project(request, person_id_name):
 
     context = RequestContext(request)
-    list = get_category_list()
+    list = get_list()
     context_dict = {}
     context_dict['list'] = list
 
@@ -126,7 +126,6 @@ def add_project(request, person_id_name):
                     {}, context)
 
             project.views = 0
-
             project.save()
             return person_(request, person_id_name)
         else:
@@ -152,7 +151,7 @@ def register(request):
 
     context = RequestContext(request)
 
-    list = get_category_list()
+    list = get_list()
     context_dict = {}
     context_dict['list'] = list
 
@@ -164,7 +163,6 @@ def register(request):
 
         if user_form.is_valid():
             user = user_form.save(commit=False)
-
             user.set_password(user.password)
             user.save()
 
@@ -184,7 +182,7 @@ def register(request):
 def user_login(request):
     context = RequestContext(request)
 
-    list = get_category_list()
+    list = get_list()
     context_dict = {}
     context_dict['list'] = list
 
@@ -218,7 +216,7 @@ def user_login(request):
 def restricted(request):
     context = RequestContext(request)
 
-    list = get_category_list()
+    list = get_list()
     context_dict = {}
     context_dict['list'] = list
     return render_to_response('restricted.html', context_dict, context)
