@@ -26,20 +26,17 @@ DATABASES = {
     'NAME': 'people.db',                                                                                                
     }                                                                                                                        
 }   
-```
 
-<code>
 INSTALLED_APPS = (   
-</code>                                                                                                          
-       <code> 'django.contrib.auth',   </code>  
-       <code> 'django.contrib.contenttypes',   </code>  
-       <code> 'django.contrib.sessions',   </code>  
-       <code> 'django.contrib.sites', </code>   </code>  
-       <code> 'django.contrib.messages', </code>  
-       <code> 'django.contrib.staticfiles',   </code>  
-       <code> 'people', </code>  
-<code>)        
-</code>          
+      'django.contrib.auth',
+      'django.contrib.contenttypes',  
+      'django.contrib.sessions',
+      'django.contrib.sites', 
+      'django.contrib.messages',  
+      'django.contrib.staticfiles',   
+      'people',   
+)        
+```        
 
 Perform migrations after changes                                                                                             
 <code>(example_django)$ python ./manage.py syncdb     </code>                                                                
