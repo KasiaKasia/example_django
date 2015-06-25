@@ -19,13 +19,14 @@ Creating the App:
 <code>(example_django)$ python ./manage.py startapp people </code>                                                                                                            
                                                                                                            
 The administration/settings.py file contains the Django configuration for our project:                                  
-<code=python>
+```
 DATABASES = {                                                                                                  
     'default': {                                                                                                         
     'ENGINE': 'django.db.backends.sqlite3',                                                                              
     'NAME': 'people.db',                                                                                                
     }                                                                                                                        
-}   </code> 
+}   
+```
 
 <code>
 INSTALLED_APPS = (   
