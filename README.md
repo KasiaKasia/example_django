@@ -21,12 +21,11 @@ Creating the App:
 The administration/settings.py file contains the Django configuration for our project:                                  
 ```
 DATABASES = {                                                                                                  
-    'default': {                                                                                                         
-    'ENGINE': 'django.db.backends.sqlite3',                                                                              
+    'default': { 
+    'ENGINE': 'django.db.backends.sqlite3', 
     'NAME': 'people.db',                                                                                                
     }                                                                                                                        
 }   
-
 INSTALLED_APPS = (   
       'django.contrib.auth',
       'django.contrib.contenttypes',  
